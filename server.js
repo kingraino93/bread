@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
   })
   
   // Breads
-  const breadsController = require('./controller/breads_controller.js.js')
+  const breadsController = require('./controller/breads_controller.js')
   app.use('/breads', breadsController)
   
 
