@@ -8,10 +8,8 @@ function Show({ bread, index }) {
         <Default>
             <h3>{bread.name}</h3>
             <img src={bread.image} alt={bread.name} />
-            <p>Baked by {bread.baker}</p>
+            <p>{bread.getBakedBy()}</p>
             <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
-
-
 
             <form action={`/breads/${bread.id}?_method=DELETE`} method="POST">
                 <input type='submit' value="DELETE" />
