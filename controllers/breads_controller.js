@@ -33,6 +33,20 @@ breads.get('/:id', (req, res) => {
       })
 })
 
+// Index:
+breads.get('/', (req, res) => {
+  Baker.find()
+    .then(foundBakers => {
+      Bread.find()
+      .then(foundBreads => {
+          res.render('index', {
+              breads: foundBreads,
+              bakers: foundBakers,
+              title: 'Index Page'
+          })
+      })
+    })
+})
 
 
 // EDIT
