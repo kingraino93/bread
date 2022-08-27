@@ -4,13 +4,14 @@ const Bread = require('../models/bread.js')
 const Baker = require('../models/baker.js')
 
 // in the new route
-breads.get('/new', (req, res) => {
-    Baker.find()
-        .then(foundBakers => {
-            res.render('new', {
-                bakers: foundBakers
-            })
-      })
+breads.get('/', async (req, res) => {
+  const foundBakers = await Baker.find()
+  const foundBreads = await Bread.find().limit (2)
+  res.render('index', {
+    breads: foundBreads,
+    bakers: foundBakers,
+    title: 'Index Page'
+  })
 })
 
 
@@ -34,19 +35,16 @@ breads.get('/:id', (req, res) => {
 })
 
 // Index:
-breads.get('/', (req, res) => {
-  Baker.find()
-    .then(foundBakers => {
-      Bread.find()
-      .then(foundBreads => {
-          res.render('index', {
-              breads: foundBreads,
-              bakers: foundBakers,
-              title: 'Index Page'
-          })
-      })
-    })
+breads.get('/', async (req, res) => {
+  const foundBakers = await Baker.find().lean() 
+  const foundBreads = await Bread.find().limit(2).lean() 
+  res.render('index', {
+    breads: foundBreads,
+    bakers: foundBakers,
+    title: 'Index Page'
+  })
 })
+
 
 
 // EDIT
