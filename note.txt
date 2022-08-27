@@ -1,1 +1,8 @@
  mongod --dbpath /Users/ibrahimsulaimon/data/db
+
+
+
+ 
+[ ... ]
+
+
